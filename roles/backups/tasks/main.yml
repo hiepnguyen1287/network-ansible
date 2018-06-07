@@ -1,0 +1,32 @@
+- name: DEFINE CONNECTION
+  set_fact:
+  connection: local
+  authorize: yes
+  host: "{{ inventory_hostname }}"
+
+- name: run show running-config on remote devices
+  ios_command:
+    commands: show running
+  register: config
+
+- name: ensure backup folder is created
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items: "{{ path }}"
+
+- name: ensure device folder is created
+  file:
+    path: "{{ item }}/{{ inventory_hostname }}"
+    state: directory
+  with_items: "{{ path }}"
+
+- name: get timestamp
+  command: date +%Y%m%d
+  register: timestamp
+
+- name: copy
+  copy:
+    content: "{{ config.stdout[0] }}"
+    dest: "{{ item }}/{{ inventory_hostname }}/running-config_{{ timestamp.stdout }}"
+  with_items: "{{ path }}"
