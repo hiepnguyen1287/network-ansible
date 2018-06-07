@@ -1,7 +1,6 @@
-
 - name: DEFINE CONNECTION
   set_fact:
-  connection:
+  connection: local
   authorize: yes
   host: "{{ inventory_hostname }}"
 
@@ -12,21 +11,22 @@
 
 - name: ensure backup folder is created
   file:
-    path: "{{ item.path }}"
+    path: "{{ item }}"
     state: directory
-    run_once: yes
-  with_dict: "{{ backup }}"
+  with_items: "{{ path }}"
 
 - name: ensure device folder is created
   file:
-    path: "{{ item.path }}/{{ inventory_hostname }}"
+    path: "{{ item }}/{{ inventory_hostname }}"
     state: directory
-  with_dict: "{{ backup }}"
+  with_items: "{{ path }}"
 
 - name: get timestamp
   command: date +%Y%m%d
   register: timestamp
 
-- copy:
+- name: copy
+  copy:
     content: "{{ config.stdout[0] }}"
-    dest: "{{ backup_root }}/{{ inventory_hostname }}/running-config_{{ timestamp.stdout }}"
+    dest: "{{ item }}/{{ inventory_hostname }}/running-config_{{ timestamp.stdout }}"
+  with_items: "{{ path }}"

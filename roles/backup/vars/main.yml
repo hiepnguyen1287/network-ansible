@@ -1,2 +1,3 @@
-backup:
-  path: /tmp/ansible/backups
+path: 
+  - /tmp/backups
+
