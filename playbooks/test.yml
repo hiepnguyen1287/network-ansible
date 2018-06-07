@@ -1,0 +1,43 @@
+- name: Test
+  hosts: all
+  connection: network_cli
+  vars:
+    users:
+        jdsilberzahn:
+            privilege: 15
+            ssh: True
+        johnny:
+            privilege: 15
+            ssh: True
+        vd:
+            privilege: 15
+            ssh: False
+  tasks:
+  - name: configure top level configuration
+    ios_config:
+      lines: hostname {{ inventory_hostname }}
+
+  - name: configure interfaces
+    ios_config:
+      lines:
+          - switchport access vlan 10
+          - switchport mode access
+      parents: interface GigabitEthernet 0/1
+
+  - name: configure users
+    ios_config:
+      lines:
+        - username {{ item.key }} privilege {{ item.value.privilege }} 
+    with_dict: "{{ users }}"
+
+  - name: configure ssh users
+    ios_config:
+      lines:
+        - "{{ lookup('file',item.key + '.pub') }}"
+        - exit
+      parents:
+        - ip ssh pubkey-chain
+        - username {{ item.key }}
+        - key-string
+    when: item.value.ssh
+    with_dict: "{{ users }}"

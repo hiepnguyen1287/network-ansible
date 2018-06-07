@@ -1,0 +1,16 @@
+users:
+  jdsilberzahn:
+    privilege: 15
+    ssh: False
+  johnny:
+    privilege: 15
+    ssh: False
+  vd:
+    privilege: 15
+    ssh: True
+  hiep:
+    privilege: 15
+    ssh: False
+  hai:
+    privilege: 15
+    ssh: False

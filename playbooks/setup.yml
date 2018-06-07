@@ -1,0 +1,6 @@
+- name: Setup Cisco
+  hosts: all
+  connection: network_cli
+  roles:
+  - uplink
+  - users

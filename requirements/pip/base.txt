@@ -1,0 +1,5 @@
+netaddr==0.7.19
+ovh==0.4.8
+pynipap==0.29.5
+python-consul==1.0.1
+jmespath==0.9.3

@@ -1,0 +1,15 @@
+[coreswitches]
+core-sw-cisc00-0000 ansible_host=172.23.233.10 ansible_network_os=ios
+core-sw-cisc00-0001 ansible_host=172.23.233.11 ansible_network_os=ios
+core-sw-cisc00-0002 ansible_host=172.23.233.12 ansible_network_os=ios
+core-sw-cisc00-0003 ansible_host=172.23.233.13 ansible_network_os=ios
+
+[userswitches:children]
+userswitches-24
+
+[userswitches-24]
+user-sw-cisc00-0000 ansible_host=172.23.233.138 ansible_network_os=ios
+user-sw-cisc00-0001
+user-sw-cisc00-0002
+user-sw-cisc00-0003
+user-sw-cisc00-0004 

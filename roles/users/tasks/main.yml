@@ -1,0 +1,22 @@
+---
+- name: configure users
+  ios_config:
+    lines:
+      - username {{ item.key }} privilege {{ item.value.privilege }} 
+  with_dict: "{{ users }}"
+
+- name: configure ssh users
+  ios_config:
+    lines:
+      - "{{ lookup('file','../files/' + item.key + '.pub') }}"
+      - exit
+    parents:
+      - ip ssh pubkey-chain
+      - username {{ item.key }}
+      - key-string
+  when: item.value.ssh
+  with_dict: "{{ users }}"
+
+- name: save
+  ios_config:
+    save: yes
