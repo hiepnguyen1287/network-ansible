@@ -1,2 +1,2 @@
 # network-ansible
-A simple netwotk coniguration via Ansible
+A simple network coniguration via Ansible
