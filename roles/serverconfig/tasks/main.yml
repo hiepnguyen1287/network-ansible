@@ -1,0 +1,10 @@
+- name: setup core server uplinks
+  ios_config:
+    lines:
+      - "switchport mode trunk"
+      - "switchport trunk allowed vlan {{ server_vlan | join(',') }} "
+    parents:
+        - interface {{ interface_prefix }}/{{ item }}
+  with_items: "{{ server_link }}"
+
+
