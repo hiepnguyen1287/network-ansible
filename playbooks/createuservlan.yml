@@ -1,0 +1,5 @@
+- name: Create USER vlan
+  hosts: userswitches-48
+  connection: network_cli
+  roles:
+  - vlancreateuser

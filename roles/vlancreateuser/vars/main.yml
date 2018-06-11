@@ -1,0 +1,27 @@
+vlan:
+  WIFI_Tech:
+    vlan_id: 3560
+  WIFI_Admin:
+    vlan_id: 3570
+  WIFI_Student:
+    vlan_id: 3580
+  WIFI_guest:
+    vlan_id: 3590
+  WIFI_Event:
+    vlan_id: 3595
+  IVR:
+    vlan_id: 3880
+  Access_control:
+    vlan_id: 3890
+  Tech:
+    vlan_id: 3960
+  Admin:
+    vlan_id: 3970
+  Student:
+    vlan_id: 3890
+  Exam:
+    vlan_id: 3960
+  Guest:
+    vlan_id: 3970
+  Event:
+    vlan_id: 3995

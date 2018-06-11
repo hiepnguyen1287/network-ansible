@@ -1,0 +1,5 @@
+- name: Create vlan
+  hosts: coreswitches
+  connection: network_cli
+  roles:
+  - vlancreate
