@@ -19,8 +19,3 @@ user-sw-cisc00-0001 ansible_host=172.23.233.139 ansible_network_os=ios
 userswitches-24
 userswitches-48
 
-[coreserver]
-core-sw-cisc00-0000 ansible_host=172.23.233.10 ansible_network_os=ios
-core-sw-cisc00-0001 ansible_host=172.23.233.11 ansible_network_os=ios
-core-sw-cisc00-0002 ansible_host=172.23.233.12 ansible_network_os=ios
-core-sw-cisc00-0003 ansible_host=172.23.233.13 ansible_network_os=ios

@@ -3,4 +3,5 @@
   connection: network_cli
   roles:
   - uplink
+  - serverports
   - users
