@@ -1,0 +1,8 @@
+- name: Add default route for switches
+  ios_config:
+    lines:
+    - "ip default-gateway 172.23.232.1"
+
+- name: save
+  ios_config:
+    save: yes

@@ -1,0 +1,5 @@
+- name: Add default route
+  hosts: all
+  connection: network_cli
+  roles:
+  - defaultroute
