@@ -1,0 +1,6 @@
+---
+- name: Setup spanning tree
+  ios_config:
+    lines:
+        - spanning-tree mode rapid-pvst
+

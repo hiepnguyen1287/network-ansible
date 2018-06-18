@@ -1,0 +1,11 @@
+- name: Setup switches
+  hosts: switches
+  connection: network_cli 
+  roles:
+  - sw_ports
+  - sw_basic
+  - sw_users
+  - sw_vlans
+  - sw_uplink
+  - sw_lldp
+  - sw_portchannels

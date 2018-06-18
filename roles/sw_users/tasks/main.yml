@@ -17,6 +17,3 @@
   when: item.value.ssh
   with_dict: "{{ users }}"
 
-- name: save
-  ios_config:
-    save: yes

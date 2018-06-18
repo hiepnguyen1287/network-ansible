@@ -1,0 +1,7 @@
+---
+dev_mgmt:
+  start: 1
+  end: 3
+
+mgmt_vlan: 3000
+

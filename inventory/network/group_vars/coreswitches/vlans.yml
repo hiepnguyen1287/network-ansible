@@ -1,0 +1,14 @@
+uplink_vlans:
+    3000: 'device-management'
+    3010: 'openstack-management'
+
+local_vlans:
+    3020: 'openstack-storage'
+    3030: 'openstack-vxlan'
+    3040: 'openstack-dbaas'
+    3041: 'openstack-lbaas'
+
+po_excluded_vlans:
+    - 3000
+
+vlans: "{{ uplink_vlans | combine (local_vlans) }}"

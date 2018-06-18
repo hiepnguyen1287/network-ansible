@@ -19,3 +19,29 @@ user-sw-cisc00-0001 ansible_host=172.23.233.139 ansible_network_os=ios
 userswitches-24
 userswitches-48
 
+[switches:children]
+userswitches
+coreswitches
+
+[idrac-osma]
+core-sw-osma00-0000-mgmt ansible_host=172.23.234.11
+core-sw-osma00-0001-mgmt ansible_host=172.23.234.12
+
+[idrac-osmc]
+core-sw-osmc00-0000-mgmt ansible_host=172.23.234.21
+core-sw-osmc00-0001-mgmt ansible_host=172.23.234.22
+
+[idrac-osco]
+core-sw-osco00-0000-mgmt ansible_host=172.23.234.31
+core-sw-osco00-0001-mgmt ansible_host=172.23.234.32
+core-sw-osco00-0002-mgmt ansible_host=172.23.234.33
+core-sw-osco00-0003-mgmt ansible_host=172.23.234.34
+core-sw-osco00-0004-mgmt ansible_host=172.23.234.35
+core-sw-osco00-0005-mgmt ansible_host=172.23.234.36
+core-sw-osco00-0006-mgmt ansible_host=172.23.234.37
+core-sw-osco00-0007-mgmt ansible_host=172.23.234.38
+
+[idrac:children]
+idrac-osma
+idrac-osmc
+idrac-osco

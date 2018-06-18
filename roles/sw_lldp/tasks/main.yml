@@ -1,0 +1,4 @@
+- name: Enable LLDP
+  ios_lldp:
+      state: present
+

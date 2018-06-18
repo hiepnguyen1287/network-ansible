@@ -1,0 +1,6 @@
+- name: Create vlan
+  ios_vlan:
+    vlan_id: "{{ item.key }}"
+    name: "{{ item.value }}"
+    state: present
+  with_dict: "{{ vlans }}"
