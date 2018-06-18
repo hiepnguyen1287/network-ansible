@@ -1,8 +1,8 @@
 - name: Setup Main Fortigate Uplinks
   ios_config:
     lines:
-    - "spanning-tree vlan {{ fortigate_vlans | join(',') }} port-priority 32"
-    - "spanning-tree vlan {{ switch_vlans | join(',') }} port-priority 0"
+    - "spanning-tree vlan {{ uplink_vlans | join(',') }} port-priority 32"
+    - "spanning-tree vlan {{ local_vlans | join(',') }} port-priority 0"
     - spanning-tree guard loop
     parents:
         - interface {{ interface_prefix }}/{{ item }}
@@ -11,8 +11,8 @@
 - name: setup interswitch uplinks
   ios_config:
     lines:
-    - "spanning-tree vlan {{ fortigate_vlans | join(',') }} port-priority 0"
-    - "spanning-tree vlan {{ switch_vlans | join(',') }} port-priority 32"
+    - "spanning-tree vlan {{ uplink_vlans | join(',') }} port-priority 0"
+    - "spanning-tree vlan {{ local_vlans | join(',') }} port-priority 32"
     - spanning-tree guard loop
     parents:
         - interface {{ interface_prefix }}/{{ item }}

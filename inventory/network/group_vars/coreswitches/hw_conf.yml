@@ -1,14 +1,3 @@
-fortigate_uplinks:
-- 47
-- 48
-switch_uplinks:
-- 46
-- 45
-switch_vlans:
-- 3020
-- 3030
-fortigate_vlans:
-- 3000
-- 3010
+
 interface_prefix: GigabitEthernet1/0
 

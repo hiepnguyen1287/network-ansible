@@ -1,0 +1,5 @@
+- name: setup switches
+  import_playbook: sw/main.yml
+
+- name: setup idrac
+  import_playbook: sv/main.yml

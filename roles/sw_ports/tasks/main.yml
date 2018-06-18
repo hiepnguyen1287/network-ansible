@@ -1,0 +1,25 @@
+- name: Setup management ports
+  ios_config:
+    lines:
+      - switchport mode access
+      - "switchport access vlan {{ mgmt_vlan }}"
+    parents: "interface {{ interface_prefix }}/{{ item }}"
+  with_sequence: start="{{ dev_mgmt.start }}" end="{{ dev_mgmt.end }}"
+
+- name: set_facts
+  set_fact:
+      closed_ports: "{{ range(1,49) | list | difference(range(dev_mgmt.start,dev_mgmt.end +1)| list + range(portchannels.start,portchannels.end + 1) | list + range(uplinks.start,uplinks.end + 1) | list) }}"
+
+- name: shutdown ports
+  ios_config:
+    lines:
+      - "default interface {{ interface_prefix }}/{{ item }}"
+  with_items: "{{ closed_ports }}"
+
+- name: shutdown ports
+  ios_config:
+    lines:
+      - shutdown
+    parents: "interface {{ interface_prefix }}/{{ item }}"
+  with_items: "{{ closed_ports }}"
+

@@ -1,0 +1,10 @@
+---
+- name: setup basic system
+  ios_config:
+    lines:
+    - hostname {{ inventory_hostname }}
+    - ip domain name int.intek.edu.vn
+    - aaa new-model
+    - aaa authentication login default local
+    - aaa authorization exec default local
+    - ip default-gateway 172.23.232.1

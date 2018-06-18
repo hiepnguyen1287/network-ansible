@@ -1,0 +1,11 @@
+
+fortigate_uplinks:
+- 47
+- 48
+switch_uplinks:
+- 46
+- 45
+
+uplinks:
+  start: 45
+  end: 48
