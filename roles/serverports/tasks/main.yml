@@ -1,0 +1,35 @@
+- name: Setup dual bond servers access
+  ios_config:
+    lines:
+    - "switchport mode trunk"
+    - "switchport trunk allowed vlan {{ quad_port_mapping[((inventory_hostname[-1] | int)%2) | string] | join(',') }}"
+    parents:
+        - interface {{ interface_prefix }}/{{ item }}
+  with_items: "{{ quad_port_ports }}"
+
+- name: Setup dual bond servers access
+  ios_config:
+    lines:
+    - "switchport mode trunk"
+    - "switchport trunk allowed vlan {{ quad_port_mapping['0'] | join(',') }},{{ quad_port_mapping['1'] | join(',') }}"
+    parents:
+        - interface {{ interface_prefix }}/{{ item }}
+  with_items: "{{ dual_port_ports }}"
+
+- name: Setup management interfaces
+  ios_config:
+    lines:
+    - "switchport mode access"
+    - "switchport access vlan 3000"
+    parents:
+        - interface {{ interface_prefix }}/{{ item }}
+  with_items: "{{ mgmt_ports }}"
+
+- name: shutdown unused ports
+  ios_config:
+    lines:
+    - shutdown
+    parents:
+    - interface {{ interface_prefix }}/{{ item }}
+  with_items: "{{ shu_ports }}"
+
